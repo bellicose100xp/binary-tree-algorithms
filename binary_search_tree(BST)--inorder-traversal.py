@@ -1,3 +1,5 @@
+# Inorder traversal of binary search tree (BST) happends from smallest node value to largest node value
+
 from __future__ import annotations
 from typing import List, Optional  # type: ignore
 from collections import deque
@@ -62,8 +64,15 @@ def printTree(root: TreeNode | None) -> None:
 
     print(tree)
 
+# create sorted array using inorder traversal of binary search tree
+def inorder(root: TreeNode | None) -> list[int]:
+    if not root:
+        return []
+    
+    return inorder(root.left) + [root.val] + inorder(root.right)
 
 tree = BinaryTree()
-leet: list[int | None] = [3, 9, 20, None, None, 15, 7]
+leet: list[int | None] = [5,3,6,2,4,None,None,1] # BST
 root = tree.buildTreeLeetCode(leet)
-printTree(root)
+# printTree(root)
+print(inorder(root))
